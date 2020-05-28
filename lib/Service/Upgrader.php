@@ -27,6 +27,7 @@ namespace OCA\UnattendedUpgrades\Service;
 
 use OC\Installer;
 use OC_App;
+use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\ILogger;
 use Throwable;
 use function array_reduce;
@@ -36,18 +37,36 @@ class Upgrader {
 	/** @var Installer */
 	private $installer;
 
+	/** @var Config */
+	private $config;
+
+	/** @var ITimeFactory */
+	private $timeFactory;
+
 	/** @var ILogger */
 	private $logger;
 
 	public function __construct(Installer $installer,
+								Config $config,
+								ITimeFactory $timeFactory,
 								ILogger $logger) {
 		$this->installer = $installer;
+		$this->config = $config;
+		$this->timeFactory = $timeFactory;
 		$this->logger = $logger;
 	}
 
 	public function upgrade(bool $dryRun = false): int {
 		if (!$dryRun) {
 			$this->logger->info("Unattended upgrade started");
+		}
+
+		list($maintenanceWindowStart, $maintenanceWindowEnd) = $this->config->getMaintenanceWindow();
+		$now = $this->timeFactory->getTime();
+		if ($now < $maintenanceWindowStart->getTimestamp()
+			|| $now > $maintenanceWindowEnd->getTimestamp()) {
+			$this->logger->debug("Unattended upgrade aborted because the maintenance window is not open");
+			return 0;
 		}
 
 		$upgraded = array_reduce(OC_App::getAllApps(), function (int $carry, string $appId) use ($dryRun) {
