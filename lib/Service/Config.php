@@ -60,4 +60,22 @@ class Config {
 		];
 	}
 
+	/**
+	 * @return string[]
+	 */
+	public function getAllowedAppIds(): array {
+		$config = $this->getConfigArray();
+
+		return $config['allowed'] ?? [];
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getBlockedAppIds(): array {
+		$config = $this->getConfigArray();
+
+		return $config['blocked'] ?? [];
+	}
+
 }

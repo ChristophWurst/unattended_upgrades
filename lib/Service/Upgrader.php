@@ -31,6 +31,7 @@ use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\ILogger;
 use Throwable;
 use function array_reduce;
+use function in_array;
 
 class Upgrader {
 
@@ -69,8 +70,19 @@ class Upgrader {
 			return 0;
 		}
 
-		$upgraded = array_reduce(OC_App::getAllApps(), function (int $carry, string $appId) use ($dryRun) {
+		$allowed = $this->config->getAllowedAppIds();
+		$blocked = $this->config->getBlockedAppIds();
+		$upgraded = array_reduce(OC_App::getAllApps(), function (int $carry, string $appId) use ($dryRun, $allowed, $blocked) {
 			if (!$this->installer->isUpdateAvailable($appId)) {
+				return $carry;
+			}
+
+			if (!empty($allowed) && !in_array($appId, $allowed, true)) {
+				$this->logger->debug("Ignoring unattended upgrade for $appId because the app is not allowed");
+				return $carry;
+			}
+			if (!empty($blocked) && in_array($appId, $blocked, true)) {
+				$this->logger->debug("Ignoring unattended upgrade for $appId because the app is blocked");
 				return $carry;
 			}
 
