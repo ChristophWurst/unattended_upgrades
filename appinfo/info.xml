@@ -8,13 +8,13 @@
 
 	]]>
 	</description>
-	<version>0.3.0</version>
+	<version>0.4.0</version>
 	<licence>mit</licence>
 	<author>Christoph Wurst</author>
 	<namespace>UnattendedUpgrades</namespace>
 	<category>integration</category>
 	<dependencies>
-		<nextcloud min-version="19" max-version="21"/>
+		<nextcloud min-version="24" max-version="26"/>
 	</dependencies>
 
 	<background-jobs>
