@@ -29,8 +29,6 @@ jobs:
         uses: ChristophWurst/setup-nextcloud@v0.3.1
         with:
           php-version: '8.0'
-          node-version: false
-          npm-version: false
           tools: 'krankerl'
       - name: Package app
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
