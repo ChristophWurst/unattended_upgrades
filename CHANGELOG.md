@@ -1,3 +1,13 @@
+## [0.4.1](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.4.0...v0.4.1) (2023-01-21)
+
+
+### Bug Fixes
+
+* **release:** Do not install node/npm ([9943dd6](https://github.com/ChristophWurst/unattended_upgrades/commit/9943dd6ffbe2dfde3edffb19cfeb651cbb166079))
+* **release:** Use PAT for release pushes ([c614c69](https://github.com/ChristophWurst/unattended_upgrades/commit/c614c6986031e8b16aeb2005e0c16c2baf286f43))
+
+
+
 # [0.4.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.3.0...v0.4.0) (2023-01-21)
 
 
