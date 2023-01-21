@@ -13,11 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.RELEASE_PAT }}
           fetch-depth: 0
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
+          github-token: ${{ secrets.RELEASE_PAT }}
           skip-git-pull: "true"
           pre-commit: build/pre-commit.js
           release-count: 0
@@ -37,6 +39,8 @@ jobs:
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         id: github-release
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
