@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.4.1...v0.4.2) (2023-01-21)
+
+
+### Bug Fixes
+
+* **release:** Ignore node/npm setup for now ([29acf57](https://github.com/ChristophWurst/unattended_upgrades/commit/29acf5794042131c1f3453f4134aa11b5220d73a))
+
+
+
 ## [0.4.1](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.4.0...v0.4.1) (2023-01-21)
 
 
