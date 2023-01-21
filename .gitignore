@@ -3,6 +3,9 @@ composer.phar
 /lib/Vendor
 /vendor/
 
+# Build files
+/build/artifacts
+
 # Mac OS
 .DS_Store
 
