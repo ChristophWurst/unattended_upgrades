@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.4.2...v0.5.0) (2023-03-21)
+
+
+### Features
+
+* **deps:** Add Nextcloud 27 support ([a063e43](https://github.com/ChristophWurst/unattended_upgrades/commit/a063e430b2e5a8fb7291d36ae66da902a8b61700))
+
+
+
 ## [0.4.2](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.4.1...v0.4.2) (2023-01-21)
 
 
