@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.6.0...v0.7.0) (2023-09-13)
+
+
+### Features
+
+* **deps:** Drop Nextcloud 24 support (EOL) ([e1b6ec7](https://github.com/ChristophWurst/unattended_upgrades/commit/e1b6ec77936c1b04e94a446f465ad6ccef283704))
+
+
+
 # [0.6.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.5.0...v0.6.0) (2023-06-20)
 
 
