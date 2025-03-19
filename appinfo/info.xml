@@ -14,7 +14,7 @@
 	<namespace>UnattendedUpgrades</namespace>
 	<category>integration</category>
 	<dependencies>
-		<nextcloud min-version="25" max-version="28"/>
+		<nextcloud min-version="29" max-version="31"/>
 	</dependencies>
 
 	<background-jobs>

@@ -28,33 +28,17 @@ namespace OCA\UnattendedUpgrades\Service;
 use OC\Installer;
 use OC_App;
 use OCP\AppFramework\Utility\ITimeFactory;
-use OCP\ILogger;
+use Psr\Log\LoggerInterface;
 use Throwable;
 use function array_reduce;
 use function in_array;
 
 class Upgrader {
 
-	/** @var Installer */
-	private $installer;
-
-	/** @var Config */
-	private $config;
-
-	/** @var ITimeFactory */
-	private $timeFactory;
-
-	/** @var ILogger */
-	private $logger;
-
-	public function __construct(Installer $installer,
-								Config $config,
-								ITimeFactory $timeFactory,
-								ILogger $logger) {
-		$this->installer = $installer;
-		$this->config = $config;
-		$this->timeFactory = $timeFactory;
-		$this->logger = $logger;
+	public function __construct(private Installer $installer,
+								private Config $config,
+								private ITimeFactory $timeFactory,
+								private LoggerInterface $logger) {
 	}
 
 	public function upgrade(bool $dryRun = false): int {
@@ -98,10 +82,7 @@ class Upgrader {
 					$this->logger->error("Unattended upgrade of $appId failed");
 				}
 			} catch (Throwable $e) {
-				$this->logger->logException($e, [
-					'message' => "Unattended upgrade of $appId failed: " . $e->getMessage(),
-					'level' => ILogger::ERROR,
-				]);
+				$this->logger->error("Unattended upgrade of $appId failed: " . $e->getMessage(), ['exception' => $e]);
 				return $carry;
 			}
 

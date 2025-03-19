@@ -34,12 +34,7 @@ class Config {
 	private const DEFAULT_MAINETNANCE_WINDOW_START = '00:00:00';
 	private const DEFAULT_MAINTENANCE_WINDOW_END = '23:59:59';
 
-	/** @var IConfig */
-	private $config;
-
-	public function __construct(IConfig $config) {
-		$this->config = $config;
-	}
+	public function __construct(private IConfig $config) {}
 
 	private function getConfigArray(): array {
 		$config = $this->config->getSystemValue('unattended_upgrades', null);

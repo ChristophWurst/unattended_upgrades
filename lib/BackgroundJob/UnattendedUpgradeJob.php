@@ -31,17 +31,12 @@ use OCP\BackgroundJob\TimedJob;
 
 class UnattendedUpgradeJob extends TimedJob {
 
-	/** @var Upgrader */
-	private $upgrader;
-
 	public function __construct(ITimeFactory $time,
-								Upgrader $upgrader) {
+								private Upgrader $upgrader) {
 		parent::__construct($time);
 
 		// Run once an hour
 		$this->setInterval(3600);
-
-		$this->upgrader = $upgrader;
 	}
 
 	protected function run($argument) {
