@@ -32,19 +32,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DryRun extends Command {
 
-	/** @var Upgrader */
-	private $upgrader;
-
-	public function __construct(Upgrader $upgrader) {
+	public function __construct(private Upgrader $upgrader) {
 		parent::__construct('unattended-upgrades:dry-run');
-
-		$this->upgrader = $upgrader;
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		$upgrades = $this->upgrader->upgrade(true);
 
 		$output->writeln("$upgrades app(s) can be upgraded");
+
+		return 0;
 	}
 
 }
