@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.8.0...v0.9.0) (2026-10-22)
+
+
+### Features
+
+* **deps:** Update Nextcloud support range ([4332f33](https://github.com/ChristophWurst/unattended_upgrades/commit/4332f336a4a73e7e74df4737476f3227cfc66c21))
+
+
+
 # [0.7.0](https://github.com/ChristophWurst/unattended_upgrades/compare/v0.6.0...v0.7.0) (2023-09-13)
 
 
