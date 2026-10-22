@@ -45,6 +45,12 @@ automatically by the release workflow (`build/pre-commit.js`, driven by
 `conventional-changelog-action`) based on Conventional Commit messages. Do not hand-edit
 version numbers.
 
+`conventional-changelog-action` only bumps the version and cuts a release for `feat`,
+`fix`, and breaking-change commits — a `chore:` commit is skipped entirely (no bump, no
+release). This matters for `<nextcloud min-version="..." max-version="..."/>` changes in
+`appinfo/info.xml`: commit those as `feat(deps): Add/Drop Nextcloud NN support`, not
+`chore(deps):`, or the change will silently never ship in an automated release.
+
 ## Architecture
 
 - **`lib/BackgroundJob/UnattendedUpgradeJob.php`** — a `TimedJob` running every 3600s that
